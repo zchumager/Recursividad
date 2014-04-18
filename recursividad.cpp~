@@ -1,0 +1,151 @@
+/*
+Función Signo
+sg(0) = 0
+sg(x + 1) = 1
+
+Función Signo Inverso
+isg(0) = 1
+isg(x + 1) = 0
+
+Función And
+And(x, y) = sg(x * y)
+
+Función Or
+Or(x, y) = sg(p + q)
+
+Ejercicios
+¿Qué resulta de aplicar?
+I-	sg(isg(sg(0)))
+II-	or(0,0)
+III-	and(1,1)
+IV-	and(or(0,1),isg(0))
+
+NOTA:Las funciones aparecian desordenadas en el archivo txt que usted me dio.
+*/
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int funcion=0, resultado=0;
+char* idFuncion="";
+
+void mostrarFunciones();
+int calcular(int);
+int factorial(int);
+int sg(int);
+int isg(int);
+int andf(int, int);
+int orf(int, int);
+
+int main(int argc, char** argv)
+{
+	cout<<"Ejemplo de recursividad en C++"<<endl;
+	cout<<"------------------------------"<<endl;
+	mostrarFunciones();
+	cout<<"Que funcion deseas calcular ";
+	cin>>funcion;
+	resultado=calcular(funcion);
+	cout<<"El resultado del "<<idFuncion<<" es "<<resultado<<endl;
+	return 0;
+}
+
+void mostrarFunciones()
+{
+	cout<<"1- Factorial"<<endl;
+	cout<<"2- Signo sg(x)"<<endl;
+	cout<<"3- Signo Inverso isg(x)"<<endl;
+	cout<<"-----Ejercicios Resueltos-----"<<endl;
+	cout<<"4- sg(isg(sg(0)))"<<endl;
+	cout<<"5- or(0,0)"<<endl;
+	cout<<"6- and(1,1)"<<endl;
+	cout<<"7- and(or(0,1),isg(0))"<<endl;
+}
+
+int calcular(int f)
+{
+	int numero=0, resultado=0;
+
+	switch(f)
+	{
+		case 1:
+			idFuncion="Factorial";
+			cout<<"Ingresa un numero ";
+			cin>>numero;
+
+			resultado=factorial(numero);
+			break;
+		case 2:
+			idFuncion="Signo";
+			cout<<"Ingresa un numero ";
+        		cin>>numero;
+
+			resultado=sg(numero);
+			break;
+		case 3:
+			idFuncion="Signo Invertido";
+			cout<<"Ingresa un numero ";
+			cin>>numero;
+
+			resultado=isg(numero);
+			break;
+		case 4:
+			idFuncion="Ejercicio I";
+			resultado=sg(isg(sg(0)));
+			break;
+		case 5:
+			idFuncion="Ejercicio II";
+			resultado=orf(0,0);
+			break;
+		case 6:
+			idFuncion="Ejercicio III";
+			resultado=andf(1,1);
+			break;
+		case 7:
+			idFuncion="Ejercicio IV";
+			resultado=andf(orf(0,1),isg(0));
+			break;
+		default:cout<<"La función que elegiste no esta entre las opciones";
+	}
+
+	return resultado;
+}
+
+int factorial (int n)
+{
+	int resultado=0;
+
+	if(n<2)
+		resultado=1;
+	else
+		resultado=n*factorial(n-1);
+
+	return resultado;
+}
+
+int sg(int n)
+{
+	int resultado=0;
+	
+	if(n>0)
+		resultado=sg(n-1);
+
+	return resultado;
+}
+
+int isg(int n)
+{
+	return !sg(n);
+}
+
+int andf(int x, int y)
+{
+	return sg(x*y);
+}
+
+int orf(int x, int y)
+{
+	int p=x, q=y;
+	return sg(p+q);
+}

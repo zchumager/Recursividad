@@ -1,0 +1,36 @@
+los ejercicios serian los siguientes
+ 
+Dadas las siguientes definiciones de funciones, comprobar que la ejecucion
+de las mismas da el resultado esperado
+Función Signo Inverso
+isg(0) = 1
+isg(x + 1) = 0
+Función Signo
+sg(0) = 0
+sg(x + 1) = 1
+(a) Que resulta de aplicar:
+i. sg(isg(sg(0)))
+Función And
+And(x, y) = sg(x * y)
+Función Or
+Or(x, y) = sg(p + q)
+(a) Que resulta de aplicar:
+i. or(0,0)
+ii. and(1,1)
+iii. and(or(0,1),isg(0))
+ 
+
+haz la corrida para que puedas luego hacer los siguientes ejercicios
+ 
+
+1. Crea una función recursiva que regrese 1 si un número es impar y 2 en
+caso contrario
+2. Crea una función recursiva de tal forma que regrese 0 si x1 = x2 = x3 = x4,
+es decir f es de la forma f(x1, x2, x3, x4), si necesitas funciones extras
+debes definirlas también.
+saludos
+Maestra Meliza
+
+
+
+sg(isg(sg(0)))= sg(isg(0))= sg(1)= 1
